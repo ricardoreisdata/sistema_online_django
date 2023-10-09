@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Alunos</title>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+    <a href="#">Cadastrar Novo Aluno</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>Endereço</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for aluno in lista %}
+        <tr>
+            <td>{{aluno.nome}}</td>
+            <td>{{aluno.data_de_nascimento}}</td>
+            <td>{{aluno.endereco}}</td>
+            <td>{{aluno.email}}</td>
+            <td>{{aluno.telefone}}</td>
+            <td>Alterar Exlcuir</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
