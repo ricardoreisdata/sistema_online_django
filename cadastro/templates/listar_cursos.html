@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Lista de Cursos</h1>
-    <a href="#">Cadastrar Novo Curso</a>
+    <a href="{% url 'incluir_curso' %}">Cadastrar Novo Curso</a>
     <table>
         <thead>
             <tr>
@@ -21,7 +21,10 @@
         <tr>
             <td>{{curso.nome}}</td>
             <td>{{curso.valor}}</td>
-            <td>Alterar Exlcuir</td>
+            <td>
+                <a href="/cadastro/editar_curso/{{curso.id_curso}}">Alterar</a> 
+                <a href="/cadastro/excluir_curso/{{curso.id_curso}}">Excluir</a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

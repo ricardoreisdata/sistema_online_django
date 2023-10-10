@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Lista de Alunos</h1>
-    <a href="#">Cadastrar Novo Aluno</a>
+    <a href="{% url 'incluir_aluno' %}">Cadastrar Novo Aluno</a>
     <table>
         <thead>
             <tr>
@@ -27,7 +27,10 @@
             <td>{{aluno.endereco}}</td>
             <td>{{aluno.email}}</td>
             <td>{{aluno.telefone}}</td>
-            <td>Alterar Exlcuir</td>
+            <td>
+                <a href="/cadastro/editar_aluno/{{aluno.id_aluno}}">Alterar</a> 
+                <a href="/cadastro/excluir_alunuo/{{aluno.id_aluno}}">Excluir</a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>
