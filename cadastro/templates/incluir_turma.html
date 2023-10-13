@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+
+    <h1>Incluir Turma</h1>
+    <form method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <input type="submit" value="Gravar" class="btn btn-primary">
+    </form>
+{% endblock %}

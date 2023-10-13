@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Lista das Turmas</h1>
+    <a href="{% url 'incluir_turma' %}">Cadastrar Nova Turma</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id Turma</th>
+                <th>Id Curso</th>
+                <th>Data Início</th>
+                <th>Data Fim</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turma in lista %}
+            <tr>
+                <td>{{turma.id_turma}}</td>
+                <td>{{turma.id_curso}}</td>
+                <td>{{turma.data_inicio}}</td>
+                <td>{{turma.data_termino}}</td>
+                <td>
+                    <a href="/cadastro/editar_turma/{{turma.id_turma}}">Alterar</a>
+                    <a href="/cadastro/excluir_turma/{{turma.id_turma}}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

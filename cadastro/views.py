@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from cadastro.models import Curso, Professor, Aluno
-from cadastro.forms import CursoForm, AlunoForm, ProfessorForm
+from cadastro.models import Curso, Professor, Aluno, Turma
+from cadastro.forms import CursoForm, AlunoForm, ProfessorForm, TurmaForm
 
 def index(request):
     return render(request, template_name='inicio.html')
@@ -131,3 +131,43 @@ def excluir_professor(request, id):
     except:
         pass
     return redirect('listar_professores')
+
+def listar_turmas(request):
+    turmas = Turma.objects.all().order_by('id_turma')
+    return render(request, template_name='listar_turmas.html', context={'lista':turmas})
+
+def incluir_turma(request):
+    if request.method == 'POST':
+        form = TurmaForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                model = form.instance
+                redirect('listar_turmas')
+            except:
+                pass
+    else:
+        form = TurmaForm()
+    return render(request, template_name='incluir_turma.html', context={'form':form})
+
+def editar_turma(request, id):
+    turma = Turma.objects.get(id_turma = id)
+    form = TurmaForm(instance=turma)
+
+    if request.method == 'POST':
+        form = TurmaForm(request.POST, instance=turma)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('listar_turmas')
+            except:
+                pass
+    return render(request, template_name='incluir_turma.html', context={'form':form})
+
+def excluir_turma(request, id):
+    turma = Turma.objects.get(id_turma = id)
+    try:
+        Aluno.delete()
+    except:
+        pass
+    return redirect('listar_turmas')
