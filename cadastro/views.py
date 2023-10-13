@@ -4,7 +4,7 @@ from cadastro.models import Curso, Professor, Aluno
 from cadastro.forms import CursoForm, AlunoForm, ProfessorForm
 
 def index(request):
-    return HttpResponse('Olá Mundo!!! Agora estou na web')
+    return render(request, template_name='inicio.html')
 
 def teste(request):
     return HttpResponse('Agora é só um teste!!!!')
