@@ -167,7 +167,7 @@ def editar_turma(request, id):
 def excluir_turma(request, id):
     turma = Turma.objects.get(id_turma = id)
     try:
-        Aluno.delete()
+        turma.delete()
     except:
         pass
     return redirect('listar_turmas')
