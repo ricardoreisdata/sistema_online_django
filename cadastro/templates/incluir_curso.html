@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load bootstrap5 %}
+
     <h1>Incluir Curso</h1>
     <form method="post">
-        {{form.as_p}}
+        {% bootstrap_form form %}
         {% csrf_token %}
         <input type="submit" value="Gravar">
     </form>

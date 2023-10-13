@@ -8,11 +8,13 @@
     {% bootstrap_css %}
 </head>
 <body>
-    <a href="{% url 'listar_cursos' %}">Cursos</a>
-    <a href="#">Turmas</a>
+    <div class="container">
+        <a href="{% url 'listar_cursos' %}">Cursos</a>
+        <a href="#">Turmas</a>
 
-    {% block content %}
-    {% endblock  %}
+        {% block content %}
+        {% endblock  %}
+    </div>
 </body>
     {% bootstrap_javascript %}
 </html>
