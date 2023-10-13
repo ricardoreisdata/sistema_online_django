@@ -9,9 +9,10 @@
 </head>
 <body>
     <div class="container">
+        <a href="{% url 'listar_alunos' %}">Alunos</a>
         <a href="{% url 'listar_cursos' %}">Cursos</a>
-        <a href="#">Turmas</a>
-
+        <a href="{% url 'listar_turmas' %}">Turmas</a>
+        <a href="{% url 'listar_professores' %}">Professor</a>
         {% block content %}
         {% endblock  %}
     </div>
