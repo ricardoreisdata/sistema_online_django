@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from cadastro.models import Curso, Professor, Aluno, Turma
 from cadastro.forms import CursoForm, AlunoForm, ProfessorForm, TurmaForm
+from django.contrib import messages
 
 def index(request):
     return render(request, template_name='inicio.html')
@@ -57,7 +58,7 @@ def excluir_curso(request, id):
     try:
         curso.delete()
     except:
-        pass
+        messages.error(request, message='Não é possível excluir.')
     return redirect('listar_cursos')
 
 def incluir_aluno(request):

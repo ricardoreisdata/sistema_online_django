@@ -17,10 +17,51 @@
             <td>{{curso.valor}}</td>
             <td>
                 <a href="/cadastro/editar_curso/{{curso.id_curso}}">Alterar</a> 
-                <a href="/cadastro/excluir_curso/{{curso.id_curso}}">Excluir</a>
+                <a href="javascript:void(0)" onclick="abrir_tela('/cadastro/excluir_curso/{{curso.id_curso}}')">Excluir</a>
             </td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="modal fade" id="tela_modal" tabindex="-1" role="dialog" aria-labelledby="telaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Exclusão</h4>
+                </div>
+                <form id="modalForm">
+                    <div class="modal-body">
+                        <label>Deseja Excluir?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class=" btn btn-secondary" data-dismiss="modal" onclick="fechar_tela()">Cancelar</button>
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="excluir()">Excluir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        caminho = '';
+        var tela_modal = document.getElementById('tela_modal');
+        function abrir_tela(url){
+            caminho = url;
+            tela_modal.style.display = 'block';
+            tela_modal.style.paddingRight = '17px';
+            tela_modal.className = 'modal fase show';
+        }
+
+        function fechar_tela(){
+            tela_modal.style.display='none';
+            tela_modal.style.className='modal fade';
+        }
+
+        function excluir(){
+            window.location = caminho;
+            fechar_tela();            
+        }
+    </script>
 {% endblock %}
