@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def logar(request):
@@ -26,3 +26,7 @@ def logar(request):
 
 def registro(request):
     return render(request, template_name='registro.html')
+
+def sair(request):
+    logout(request)
+    return redirect('index')

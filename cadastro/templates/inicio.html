@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% if user.is_authenticated %}
+        <h2>Seja bem vindo.</h2>
+    {% else %}
+        <a href="{% url 'login' %}">Clique aqui para logar</a>
+        <a href="#  ">Clique aqui para criar uma nova conta</a>
+    {% endif %}
 
-    <h2>Seja bem vindo.</h2>
 
 {% endblock %}
