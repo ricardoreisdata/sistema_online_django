@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from autenticacao.forms import NovoUsuarioForm
+
 
 def logar(request):
     form = AuthenticationForm(request, data=request.POST)
@@ -25,8 +27,10 @@ def logar(request):
     return render(request, template_name='login.html', context={'login_form':form})
 
 def registro(request):
-    return render(request, template_name='registro.html')
+    form = NovoUsuarioForm()
+    return render(request, template_name='registro.html', context: {'usuario_form': })
 
 def sair(request):
     logout(request)
     return redirect('index')
+
